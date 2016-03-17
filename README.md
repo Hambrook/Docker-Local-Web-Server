@@ -2,16 +2,16 @@
 
 ###Nginx or Apache? PHP 7 or 5? How about every permutation at once?
 
-This is a set of containers that let you host mutliple websites with different server configurations. Choose between Nginx or Apache, PHP7 or PHP5. There's also MySQL and phpMyAdmin in there too.
+This is a set of containers that let you host multiple websites with different server configurations. Choose between Nginx or Apache, PHP7 or PHP5. There's also MySQL and phpMyAdmin in there too.
 
 ##Requirements
 
-You need Docker and Docker Composer. These installation instructions differ depending on your platform, but can be found [here for Docker](https://docs.docker.com/engine/installation/) and [here for Docker Compose](https://docs.docker.com/compose/install/).
+You need Docker and Docker Compose. These installation instructions differ depending on your platform, but can be found [here for Docker](https://docs.docker.com/engine/installation/) and [here for Docker Compose](https://docs.docker.com/compose/install/).
 
 ##Installation and Configuration
 
 * Clone this repo (`git clone https://github.com/Hambrook/Docker-Local-Web-Server.git`)
-* Then enter the directory and open the `docker-compose.yml` file. Update the "/data" paths to your lcoal web root.
+* Then enter the directory and open the `docker-compose.yml` file. Update the "/data" paths to your local web root.
 * Open up your terminal, navigate to the directory containing the `docker-compose.yml` file and run `sudo docker-compose up -d`
 
 ##Configuring Vhosts
@@ -82,7 +82,7 @@ Feel free to fork this project and submit pull requests, or even just request fe
 * _If you have an idea, [let me know](https://github.com/Hambrook/Docker-Local-Web-Server/issues)._
 
 ##License
-Copyright &copy; 2016 Rick Hambrook
+Copyright © 2016 Rick Hambrook
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
