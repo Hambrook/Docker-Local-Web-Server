@@ -30,9 +30,9 @@ Creating a new Apache website also involves creating an Apache vhost. Go into ei
 Restart the servers by running `sudo docker-compose up -d` and your new sites should work.
 
 ##Database
-The MySQl instance uses a username/password of root/root. All containers have access to the MySQL container via `mysql:3306`. The host can also access this same mysql instance via `localhost:3306`.
+The MariaDB and MySQL instances use the usernames/passwords of root/root. All containers have access to these containers via `mariadb:3306` and `mysql:3306`. The host can also access MariaDB via `localhost:33061 and MySQL via `localhost:3308`.
 
-You can also use phpMyAdmin via http://localhost:1234/ and logging in with mysql/root/root.
+You can also use phpMyAdmin via http://localhost:1234/ to log into either database server using mariadb or mysql and root/root.
 
 ##Installed Modules
 A number of modules are already installed, and this list may expand.
