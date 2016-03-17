@@ -39,7 +39,7 @@ A number of modules are already installed, and this list may expand.
 
 ###PHP7
 
-* bcMath
+* bcmath
 * mbstring
 * mcrypt
 * mysqli

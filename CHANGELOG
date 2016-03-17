@@ -1,3 +1,4 @@
+2016-03-18: fix(apache-php5): add php.ini (and therefore default timezone)
 2016-03-17: feat(mariadb): add MariaDB
 2016-03-17: feat(mysql): update MySQL config to have suitable charsets
 2016-03-17: fix(docs): fix typos in the readme
