@@ -73,11 +73,12 @@ Tell me if you loved it. Tell me if you hated it. Tell me if you used it and tho
 Feel free to fork this project and submit pull requests, or even just request features via the issue tracker. Please be descriptive with pull requests and match the existing code style.
 
 ##Roadmap
-* Add MariaDB
 * Add xDebug
 * Add GD/Imagick for PHP7
+* Add SSL
 * Make it easier to customise web roots
 * Update to use one Apache container that references the PHP FPM containers
+* Move to lighter weight containers, or just wait for them to migrate to Alphine or something
 * Rename this package to something better
 * _If you have an idea, [let me know](https://github.com/Hambrook/Docker-Local-Web-Server/issues)._
 
