@@ -2,6 +2,7 @@ nginx:
     image: "nginx"
     ports:
         - "80:80"
+        - "443:443"
     volumes:
         - "./nginx/vhosts:/etc/nginx/conf.d"
         - "/data:/var/www/html"
@@ -22,6 +23,7 @@ php7fpm:
         - "/etc/localtime:/etc/localtime"
         - "/etc/timezone:/etc/timezone"
     links:
+        - "mariadb:mariadb"
         - "mysql:mysql"
 
 php5fpm:
@@ -34,6 +36,7 @@ php5fpm:
         - "/etc/localtime:/etc/localtime"
         - "/etc/timezone:/etc/timezone"
     links:
+        - "mariadb:mariadb"
         - "mysql:mysql"
 
 apachephp7:
@@ -48,6 +51,7 @@ apachephp7:
         - "/etc/localtime:/etc/localtime"
         - "/etc/timezone:/etc/timezone"
     links:
+        - "mariadb:mariadb"
         - "mysql:mysql"
 
 apachephp5:
@@ -62,12 +66,30 @@ apachephp5:
         - "/etc/localtime:/etc/localtime"
         - "/etc/timezone:/etc/timezone"
     links:
+        - "mariadb:mariadb"
         - "mysql:mysql"
+
+mariadb:
+    image: "mariadb:latest"
+    expose:
+        - "3306:3306"
+    ports:
+        - "3306:3306"
+    environment:
+        MYSQL_ROOT_PASSWORD: "root"
+    volumes:
+        - "./mariadb/my.cnf:/etc/mysql/conf.d/my.cnf"
+        - "./storage/mariadb:/var/lib/mysql"
+        - "/etc/localtime:/etc/localtime"
+        - "/etc/timezone:/etc/timezone"
 
 mysql:
     image: "mysql:latest"
     expose:
         - "3306:3306"
+        - "3308:3306"
+    ports:
+        - "3308:3306"
     environment:
         MYSQL_ROOT_PASSWORD: "root"
     volumes:
@@ -86,4 +108,5 @@ phpmyadmin:
         - "/etc/localtime:/etc/localtime"
         - "/etc/timezone:/etc/timezone"
     links:
+        - "mariadb:mariadb"
         - "mysql:mysql"

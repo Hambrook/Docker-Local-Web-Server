@@ -30,9 +30,9 @@ Creating a new Apache website also involves creating an Apache vhost. Go into ei
 Restart the servers by running `sudo docker-compose up -d` and your new sites should work.
 
 ##Database
-The MySQl instance uses a username/password of root/root. All containers have access to the MySQL container via `mysql:3306`. The host can also access this same mysql instance via `localhost:3306`.
+The MariaDB and MySQL instances use the usernames/passwords of root/root. All containers have access to these containers via `mariadb:3306` and `mysql:3306`. The host can also access MariaDB via `localhost:33061 and MySQL via `localhost:3308`.
 
-You can also use phpMyAdmin via http://localhost:1234/ and logging in with mysql/root/root.
+You can also use phpMyAdmin via http://localhost:1234/ to log into either database server using mariadb or mysql and root/root.
 
 ##Installed Modules
 A number of modules are already installed, and this list may expand.
@@ -73,11 +73,12 @@ Tell me if you loved it. Tell me if you hated it. Tell me if you used it and tho
 Feel free to fork this project and submit pull requests, or even just request features via the issue tracker. Please be descriptive with pull requests and match the existing code style.
 
 ##Roadmap
-* Add MariaDB
 * Add xDebug
 * Add GD/Imagick for PHP7
+* Add SSL
 * Make it easier to customise web roots
 * Update to use one Apache container that references the PHP FPM containers
+* Move to lighter weight containers, or just wait for them to migrate to Alphine or something
 * Rename this package to something better
 * _If you have an idea, [let me know](https://github.com/Hambrook/Docker-Local-Web-Server/issues)._
 
