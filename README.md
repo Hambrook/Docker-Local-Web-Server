@@ -30,7 +30,7 @@ Creating a new Apache website also involves creating an Apache vhost. Go into ei
 Restart the servers by running `sudo docker-compose up -d` and your new sites should work.
 
 ##Database
-The MariaDB and MySQL instances use the usernames/passwords of root/root. All containers have access to these containers via `mariadb:3306` and `mysql:3306`. The host can also access MariaDB via `localhost:33061 and MySQL via `localhost:3308`.
+The MariaDB and MySQL instances use the usernames/passwords of root/root. All containers have access to these containers via `mariadb:3306` and `mysql:3306`. The host can also access MariaDB via `localhost:3306` and MySQL via `localhost:3308`.
 
 You can also use phpMyAdmin via http://localhost:1234/ to log into either database server using mariadb or mysql and root/root.
 
@@ -39,7 +39,7 @@ A number of modules are already installed, and this list may expand.
 
 ###PHP7
 
-* bcMath
+* bcmath
 * mbstring
 * mcrypt
 * mysqli
@@ -65,6 +65,9 @@ Because I need to develop for modern servers while also maintaining legacy syste
 
 ###Does data get lost when the containers are stopped or rebuilt?
 Your website files and database will be retained, but any logs will be lost. Feel free to pipe them to specific outputs if you wish.
+
+###Why are the images so big?
+I'm using the default Docker images where possible, and they haven't made the move to being based on Alpine yet. Hopefully they catch up.
 
 ##Feedback
 Tell me if you loved it. Tell me if you hated it. Tell me if you used it and thought "meh". I'm keen to hear your feedback.

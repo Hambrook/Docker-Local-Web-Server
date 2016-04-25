@@ -17,7 +17,7 @@ nginx:
 php7fpm:
     build: "php7-fpm"
     expose:
-        - "9000:9000"
+        - "9000"
     volumes:
         - "/data:/var/www/html"
         - "/etc/localtime:/etc/localtime"
@@ -29,7 +29,7 @@ php7fpm:
 php5fpm:
     build: "php5-fpm"
     expose:
-        - "9000:9000"
+        - "9000"
     volumes:
         - "./php5-fpm/php.ini:/usr/local/etc/php/php.ini"
         - "/data:/var/www/html"
@@ -42,8 +42,8 @@ php5fpm:
 apachephp7:
     build: "php7-apache"
     expose:
-        - "80:80"
-        - "443:443"
+        - "80"
+        - "443"
     volumes:
         - "./php7-apache/vhosts:/etc/apache2/sites-enabled"
         - "./php7-apache/conf:/etc/apache2/conf-enabled"
@@ -57,9 +57,10 @@ apachephp7:
 apachephp5:
     build: "php5-apache"
     expose:
-        - "80:80"
-        - "443:443"
+        - "80"
+        - "443"
     volumes:
+        - "./php5-apache/php.ini:/usr/local/etc/php/php.ini"
         - "./php5-apache/vhosts:/etc/apache2/sites-enabled"
         - "./php5-apache/conf:/etc/apache2/conf-enabled"
         - "/data:/var/www/html"
@@ -72,7 +73,7 @@ apachephp5:
 mariadb:
     image: "mariadb:latest"
     expose:
-        - "3306:3306"
+        - "3306"
     ports:
         - "3306:3306"
     environment:
@@ -86,8 +87,7 @@ mariadb:
 mysql:
     image: "mysql:latest"
     expose:
-        - "3306:3306"
-        - "3308:3306"
+        - "3306"
     ports:
         - "3308:3306"
     environment:
