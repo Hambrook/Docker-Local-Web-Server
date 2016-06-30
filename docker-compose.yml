@@ -45,6 +45,7 @@ apachephp7:
         - "80"
         - "443"
     volumes:
+        - "./php7-apache/php.ini:/usr/local/etc/php/php.ini"
         - "./php7-apache/vhosts:/etc/apache2/sites-enabled"
         - "./php7-apache/conf:/etc/apache2/conf-enabled"
         - "/data:/var/www/html"
