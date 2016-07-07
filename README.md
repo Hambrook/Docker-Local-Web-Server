@@ -24,10 +24,10 @@ There are 4 vhosts already configured:
 * localhost-a7 = Apache, PHP7
 
 Remember to add these hosts to your `hosts` file:
-    localhost-n5 127.0.0.1
-    localhost-n7 127.0.0.1
-    localhost-a5 127.0.0.1
-    localhost-a7 127.0.0.1
+    127.0.0.1 localhost-n5
+    127.0.0.1 localhost-n7
+    127.0.0.1 localhost-a5
+    127.0.0.1 localhost-a7
 
 To create a new website, just copy either one of the files in `nginx/vhosts/` that matches what you're setting up (eg localhost-n7 is Nginx with PHP7), rename and update it to match the hostname you're setting up.
 
