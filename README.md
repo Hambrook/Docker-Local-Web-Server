@@ -16,12 +16,18 @@ You need Docker and Docker Compose. These installation instructions differ depen
 
 ##Configuring Vhosts
 
-There are 4 vhosts already configured (though you'll have to add entries to your hosts file):
+There are 4 vhosts already configured:
 
 * localhost-n5 = Nginx, PHP5
 * localhost-n7 = Nginx, PHP7
 * localhost-a5 = Apache, PHP5
 * localhost-a7 = Apache, PHP7
+
+Remember to add these hosts to your `hosts` file:
+    localhost-n5 127.0.0.1
+    localhost-n7 127.0.0.1
+    localhost-a5 127.0.0.1
+    localhost-a7 127.0.0.1
 
 To create a new website, just copy either one of the files in `nginx/vhosts/` that matches what you're setting up (eg localhost-n7 is Nginx with PHP7), rename and update it to match the hostname you're setting up.
 
@@ -40,9 +46,11 @@ A number of modules are already installed, and this list may expand.
 ###PHP7
 
 * bcmath
+* iconv
 * mbstring
 * mcrypt
 * mysqli
+* pdo_mysql
 
 ###PHP5
 
@@ -77,7 +85,6 @@ Feel free to fork this project and submit pull requests, or even just request fe
 
 ##Roadmap
 * Add xDebug
-* Add GD/Imagick for PHP7
 * Add SSL
 * Make it easier to customise web roots
 * Update to use one Apache container that references the PHP FPM containers
