@@ -24,6 +24,7 @@ There are 4 vhosts already configured:
 * localhost-a7 = Apache, PHP7
 
 Remember to add these hosts to your `hosts` file:
+
     127.0.0.1 localhost-n5
     127.0.0.1 localhost-n7
     127.0.0.1 localhost-a5
