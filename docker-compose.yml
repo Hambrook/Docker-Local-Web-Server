@@ -1,113 +1,123 @@
-nginx:
-    image: "nginx"
-    ports:
-        - "80:80"
-        - "443:443"
-    volumes:
-        - "./nginx/vhosts:/etc/nginx/conf.d"
-        - "/data:/var/www/html"
-        - "/etc/localtime:/etc/localtime"
-        - "/etc/timezone:/etc/timezone"
-    links:
-        - "php7fpm:php7fpm"
-        - "php5fpm:php5fpm"
-        - "apachephp5:apachephp5"
-        - "apachephp7:apachephp7"
+version: "2"
+services:
+    nginx:
+        user: "root"
+        image: "nginx"
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - "./nginx/vhosts:/etc/nginx/conf.d"
+            - "/data:/var/www/html"
+            - "/etc/localtime:/etc/localtime"
+            - "/etc/timezone:/etc/timezone"
+        links:
+            - "php7fpm:php7fpm"
+            - "php5fpm:php5fpm"
+            - "apachephp5:apachephp5"
+            - "apachephp7:apachephp7"
 
-php7fpm:
-    build: "php7-fpm"
-    expose:
-        - "9000"
-    volumes:
-        - "/data:/var/www/html"
-        - "/etc/localtime:/etc/localtime"
-        - "/etc/timezone:/etc/timezone"
-    links:
-        - "mariadb:mariadb"
-        - "mysql:mysql"
+    php7fpm:
+        user: "root"
+        build: "php7-fpm"
+        expose:
+            - "9000"
+        volumes:
+            - "/data:/var/www/html"
+            - "/etc/localtime:/etc/localtime"
+            - "/etc/timezone:/etc/timezone"
+        links:
+            - "mariadb:mariadb"
+            - "mysql:mysql"
 
-php5fpm:
-    build: "php5-fpm"
-    expose:
-        - "9000"
-    volumes:
-        - "./php5-fpm/php.ini:/usr/local/etc/php/php.ini"
-        - "/data:/var/www/html"
-        - "/etc/localtime:/etc/localtime"
-        - "/etc/timezone:/etc/timezone"
-    links:
-        - "mariadb:mariadb"
-        - "mysql:mysql"
+    php5fpm:
+        user: "root"
+        build: "php5-fpm"
+        expose:
+            - "9000"
+        volumes:
+            - "./php5-fpm/php.ini:/usr/local/etc/php/php.ini"
+            - "/data:/var/www/html"
+            - "/etc/localtime:/etc/localtime"
+            - "/etc/timezone:/etc/timezone"
+        links:
+            - "mariadb:mariadb"
+            - "mysql:mysql"
 
-apachephp7:
-    build: "php7-apache"
-    expose:
-        - "80"
-        - "443"
-    volumes:
-        - "./php7-apache/php.ini:/usr/local/etc/php/php.ini"
-        - "./php7-apache/vhosts:/etc/apache2/sites-enabled"
-        - "./php7-apache/conf:/etc/apache2/conf-enabled"
-        - "/data:/var/www/html"
-        - "/etc/localtime:/etc/localtime"
-        - "/etc/timezone:/etc/timezone"
-    links:
-        - "mariadb:mariadb"
-        - "mysql:mysql"
+    apachephp7:
+        user: "root"
+        build: "php7-apache"
+        expose:
+            - "80"
+            - "443"
+        volumes:
+            - "./php7-apache/php.ini:/usr/local/etc/php/php.ini"
+            - "./php7-apache/vhosts:/etc/apache2/sites-enabled"
+            - "./php7-apache/conf:/etc/apache2/conf-enabled"
+            - "/data:/var/www/html"
+            - "/etc/localtime:/etc/localtime"
+            - "/etc/timezone:/etc/timezone"
+        links:
+            - "mariadb:mariadb"
+            - "mysql:mysql"
 
-apachephp5:
-    build: "php5-apache"
-    expose:
-        - "80"
-        - "443"
-    volumes:
-        - "./php5-apache/php.ini:/usr/local/etc/php/php.ini"
-        - "./php5-apache/vhosts:/etc/apache2/sites-enabled"
-        - "./php5-apache/conf:/etc/apache2/conf-enabled"
-        - "/data:/var/www/html"
-        - "/etc/localtime:/etc/localtime"
-        - "/etc/timezone:/etc/timezone"
-    links:
-        - "mariadb:mariadb"
-        - "mysql:mysql"
+    apachephp5:
+        user: "root"
+        build: "php5-apache"
+        expose:
+            - "80"
+            - "443"
+        volumes:
+            - "./php5-apache/php.ini:/usr/local/etc/php/php.ini"
+            - "./php5-apache/vhosts:/etc/apache2/sites-enabled"
+            - "./php5-apache/conf:/etc/apache2/conf-enabled"
+            - "/data:/var/www/html"
+            - "/etc/localtime:/etc/localtime"
+            - "/etc/timezone:/etc/timezone"
+        links:
+            - "mariadb:mariadb"
+            - "mysql:mysql"
 
-mariadb:
-    image: "mariadb:latest"
-    expose:
-        - "3306"
-    ports:
-        - "3306:3306"
-    environment:
-        MYSQL_ROOT_PASSWORD: "root"
-    volumes:
-        - "./mariadb/my.cnf:/etc/mysql/conf.d/my.cnf"
-        - "./storage/mariadb:/var/lib/mysql"
-        - "/etc/localtime:/etc/localtime"
-        - "/etc/timezone:/etc/timezone"
+    mariadb:
+        user: "root"
+        image: "mariadb:latest"
+        expose:
+            - "3306"
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: "root"
+        volumes:
+            - "./mariadb/my.cnf:/etc/mysql/conf.d/my.cnf"
+            - "./storage/mariadb:/var/lib/mysql"
+            - "/etc/localtime:/etc/localtime"
+            - "/etc/timezone:/etc/timezone"
 
-mysql:
-    image: "mysql:latest"
-    expose:
-        - "3306"
-    ports:
-        - "3308:3306"
-    environment:
-        MYSQL_ROOT_PASSWORD: "root"
-    volumes:
-        - "./mysql/my.cnf:/etc/mysql/conf.d/my.cnf"
-        - "./storage/mysql:/var/lib/mysql"
-        - "/etc/localtime:/etc/localtime"
-        - "/etc/timezone:/etc/timezone"
+    mysql:
+        user: "root"
+        image: "mysql:latest"
+        expose:
+            - "3306"
+        ports:
+            - "3308:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: "root"
+        volumes:
+            - "./mysql/my.cnf:/etc/mysql/conf.d/my.cnf"
+            - "./storage/mysql:/var/lib/mysql"
+            - "/etc/localtime:/etc/localtime"
+            - "/etc/timezone:/etc/timezone"
 
-phpmyadmin:
-    image: "nazarpc/phpmyadmin"
-    ports:
-        - "1234:80"
-    environment:
-        ALLOW_ARBITRARY: 1
-    volumes:
-        - "/etc/localtime:/etc/localtime"
-        - "/etc/timezone:/etc/timezone"
-    links:
-        - "mariadb:mariadb"
-        - "mysql:mysql"
+    phpmyadmin:
+        user: "root"
+        image: "nazarpc/phpmyadmin"
+        ports:
+            - "1234:80"
+        environment:
+            ALLOW_ARBITRARY: 1
+        volumes:
+            - "/etc/localtime:/etc/localtime"
+            - "/etc/timezone:/etc/timezone"
+        links:
+            - "mariadb:mariadb"
+            - "mysql:mysql"
