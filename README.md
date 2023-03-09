@@ -1,3 +1,12 @@
+> .
+>
+> ## This project has been deprecated
+>
+> #### It was great at the time but has been far surpassed by [Docksal](https://docksal.io/), [Lando](https://lando.dev/), or [DDEV](https://ddev.com/).
+> #### Although these are much heavier, they are far superior.
+>
+> .
+
 # Docker Local Web Server
 
 ### Nginx or Apache? PHP 7 or 5? How about every permutation at once?
